@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Luis Trejo">
+  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <title>My Library</title>
+</head>
+
+<body>
+  <header>
+    <div>MyLOGO</div>
+    <nav>
+      <ul>
+        <li><a href="#">sample</a></li>
+        <li><a href="#">sample</a></li>
+        <li><a href="#">sample</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <button id="new-book">New Book</button>
+    <div class="overlay-popUp">
+      <form id="book-form" class="popUp" action="#">
+        <span class="close-form">X</span>
+        <legend>New Book</legend>
+        <label for="title">Title:
+          <input type="text" id="addTitle" name="title" required>
+        </label>
+        <label for="author">Author:
+          <input type="text" id="addAuthor" name="author" required>
+        </label>
+        <label for="pages">Pages:
+          <input type="number" id="addPages" name="pages" required>
+        </label>
+        <input type="checkbox" id="read" checked class="toggle">
+        <label for="read">Read</label>
+        <button type="submit">Add Book</button>
+      </form>
+      <form id="edit-form" class="popUp" action="#">
+        <span class="close-form">X</span>
+        <legend>Edit Book</legend>
+        <label for="title">Title:
+          <input type="text" id="editTitle" name="title">
+        </label>
+        <label for="author">Author:
+          <input type="text" id="editAuthor" name="author">
+        </label>
+        <label for="pages">Pages:
+          <input type="number" id="editPages" name="pages" required>
+        </label>
+        <button id="edit-book" type="submit">Ok</button>
+      </form>
+    </div>
+    <section class="book-container">
+    </section>
+  </main>
+  <footer>
+    Luis Trejo
+  </footer>
+</body>
+
+</html>
