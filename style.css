@@ -15,7 +15,6 @@
 }
 
 html {
-  /* background-color: bisque; */
   font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
 }
@@ -25,11 +24,10 @@ body {
   background-color: var(--lt-sh-clr);
   display: grid;
   height: 100vh;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 100px 1fr 50px;
 }
 
 header {
-  /* border: 1px solid green; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,13 +39,13 @@ header {
   list-style: none;
   display: flex;
   gap: 1rem;
+  justify-content: space-evenly;
 }
 
 .header-menu a {
   font-size: 1rem;
   text-decoration: none;
   color: var(--lt-sh-clr);
-  margin-right: 1rem;
 }
 
 main {
@@ -141,7 +139,7 @@ button:active {
   padding: 1rem;
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .book-card {
@@ -150,21 +148,34 @@ button:active {
   color: var(--dk-sh-clr);
   border: 1px solid var(--dk-acc-clr);
   border-radius: 1rem;
-  /* height: auto; */
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  word-wrap: break-word;
 }
 
 .book-card>p {
   border-bottom: 1px solid #FFFCC533;
 }
 
+.book-card>p:nth-child(3)::after {
+
+  content: 'pp';
+  font-style: italic;
+  font-size: 0.8em;
+}
+
 .book-card>p:nth-child(4) {
   border-bottom: none;
+  font-size: 0.8em;
+}
+
+.book-card>p:first-child {
+  font-weight: 900;
+  border-bottom: 1px solid #FFFCC566;
 }
 
 
@@ -184,15 +195,12 @@ button:active {
 }
 
 .book-card-menu>img:hover {
-  /* box-shadow: 5px 5px 10px black; */
   background-color: var(--lt-sh-clr);
 }
 
 input[type='checkbox'].toggle {
-  opacity: 0;
+  display: none;
   position: absolute;
-  left: -9000px;
-  top: -9000px;
 }
 
 input[type='checkbox'].toggle+label {
@@ -253,7 +261,7 @@ input[type='checkbox'].toggle:checked+label::after {
 }
 
 footer {
-  border: 1px solid green;
+  text-align: center;
 }
 
 
@@ -264,6 +272,10 @@ footer {
     width: 90%;
     margin: 0 auto;
   }
+
+  header {
+    justify-content: space-around;
+  }
 }
 
 /* desktop size */
@@ -273,5 +285,9 @@ footer {
     /* background-color: brown; */
     width: 80%;
     margin: 0 auto;
+  }
+
+  header {
+    justify-content: space-around;
   }
 }
