@@ -107,11 +107,13 @@ function createBookCard(book) {
   const divMenu = document.createElement('div')
   divMenu.classList.add('book-card-menu')
   const imgDel = document.createElement('img')
-  imgDel.src = './images/delete40.png'
+  // imgDel.src = './images/delete40.png'
+  imgDel.src = './images/trash-outline.svg'
   imgDel.addEventListener('click', deleteCard)
 
   const imgEdit = document.createElement('img')
-  imgEdit.src = './images/edit40.png'
+  // imgEdit.src = './images/edit40.png'
+  imgEdit.src = './images/pencil-outline.svg'
   imgEdit.title = 'edit'
   imgEdit.addEventListener('click', popUpHandler)
   divMenu.append(imgDel, imgEdit)

@@ -1,3 +1,11 @@
+:root {
+  --lt-sh-clr: #FFFCC5;
+  --lt-acc-clr: #73B299;
+  --main-clr: #DA9C71;
+  --dk-acc-clr: #876D55;
+  --dk-sh-clr: #2C2C29;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
@@ -7,33 +15,65 @@
 }
 
 html {
-  background-color: bisque;
+  /* background-color: bisque; */
   font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
 }
 
 /* Mobile first */
 body {
+  background-color: var(--lt-sh-clr);
   display: grid;
   height: 100vh;
   grid-template-rows: 100px 1fr 100px;
 }
 
 header {
-  border: 1px solid green;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--lt-acc-clr);
+}
+
+.header-menu {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.header-menu a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--lt-sh-clr);
+  margin-right: 1rem;
 }
 
 main {
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   align-content: center;
 
 }
 
-#new-book {
-  background-color: pink;
+button {
+  background-color: var(--dk-acc-clr);
+  color: var(--lt-sh-clr);
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  border: 1px solid var(--main-clr);
   margin: 1rem auto;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 4px 4px 5px var(--dk-acc-clr);
+}
+
+button:active {
+  box-shadow: none;
 }
 
 .overlay-popUp {
@@ -52,7 +92,8 @@ main {
   border-radius: 1rem;
   padding: 1rem;
   height: auto;
-  background-color: aliceblue;
+  background-color: var(--lt-acc-clr);
+  color: var(--lt-sh-clr);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -63,10 +104,22 @@ main {
   z-index: 11;
 }
 
+.popUp>legend {
+  font-size: 1.5em;
+}
+
 .overlay-popUp>form {
   display: none;
   flex-direction: column;
   gap: 1rem;
+  font-size: 1.2em;
+}
+
+.popUp input {
+  font-size: 1em;
+  border-radius: 0.5em;
+  padding: .2em;
+  border: none
 }
 
 .close-form {
@@ -93,10 +146,11 @@ main {
 
 .book-card {
   position: relative;
-  background-color: aqua;
-  border: 1px solid firebrick;
+  background-color: var(--main-clr);
+  color: var(--dk-sh-clr);
+  border: 1px solid var(--dk-acc-clr);
   border-radius: 1rem;
-  height: auto;
+  /* height: auto; */
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -106,8 +160,14 @@ main {
 }
 
 .book-card>p {
-  border-bottom: 1px dotted black;
+  border-bottom: 1px solid #FFFCC533;
 }
+
+.book-card>p:nth-child(4) {
+  border-bottom: none;
+}
+
+
 
 .book-card-menu {
   position: absolute;
@@ -120,10 +180,12 @@ main {
 .book-card-menu>img {
   width: 1rem;
   cursor: pointer;
+  border-radius: 0.5rem;
 }
 
 .book-card-menu>img:hover {
-  box-shadow: 1px 1px 5px black;
+  /* box-shadow: 5px 5px 10px black; */
+  background-color: var(--lt-sh-clr);
 }
 
 input[type='checkbox'].toggle {
@@ -155,6 +217,7 @@ input[type='checkbox'].toggle+label::before {
   height: 1.5em;
   background-color: hsl(0, 75%, 80%);
   border-radius: 1em;
+  border: 1px solid var(--dk-sh-clr);
   margin-right: 0.25em;
   transition: 200ms;
 }
@@ -196,8 +259,8 @@ footer {
 
 /* Tablet size */
 @media only screen and (min-width: 480px) and (max-width: 750px) {
-  html {
-    background-color: purple;
+  main {
+    /* background-color: purple; */
     width: 90%;
     margin: 0 auto;
   }
@@ -206,8 +269,8 @@ footer {
 /* desktop size */
 @media only screen and (min-width: 751px) {
 
-  html {
-    background-color: brown;
+  main {
+    /* background-color: brown; */
     width: 80%;
     margin: 0 auto;
   }
