@@ -22,14 +22,7 @@ class Book {
   }
 }
 
-myLibrary.push(new Book('1984', 'George Orwell', 328, false))
-myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 310, true))
-myLibrary.push(new Book('Dracula', 'Bram Stoker', 431, true))
-myLibrary.push(new Book('Animal Farm', 'George Orwell', 86, true))
-myLibrary.push(new Book('The Fellowship of The Ring', 'J.R.R. Tolkien', 432, false))
-myLibrary.push(new Book('The Martian', 'Andy Weir', 387, true))
-myLibrary.push(new Book('The Last Wish', 'Andrzej Sapkowski', 384, false))
-myLibrary.push(new Book('Atomic Habits', 'James Clear', 320, true))
+firstLoad()
 
 renderCards()
 
@@ -72,6 +65,7 @@ function addBook(e) {
     const read = document.querySelector('#read').checked
 
     myLibrary.push(new Book(title, author, pages, read))
+    saveLocalStorage()
 
     popUpHandler(e)
     createBookCard(myLibrary[myLibrary.length - 1])
@@ -130,6 +124,7 @@ function deleteCard(e) {
   if (confirm(`Do you want to delete ${title} entry?`)) {
     //Delete book from library
     myLibrary = myLibrary.filter(b => b.title !== title)
+    saveLocalStorage()
     //Delete card
     document.querySelector('.book-container').removeChild(card)
   }
@@ -158,6 +153,8 @@ function editBook(e) {
     currentBook.author = document.querySelector('#editAuthor').value
     currentBook.pages = document.querySelector('#editPages').value
 
+    saveLocalStorage()
+
     currentCard.childNodes[0].textContent = currentBook.title
     currentCard.childNodes[1].textContent = currentBook.author
     currentCard.childNodes[2].textContent = currentBook.pages
@@ -184,10 +181,34 @@ function toggleReadHandler(e) {
     currentCard[3].lastChild.textContent = 'Not yet read'
     currentBook.read = false
   }
+  saveLocalStorage()
 }
 
 function renderCards() {
   if (myLibrary.length > 0) {
     myLibrary.forEach(book => createBookCard(book))
   }
+}
+
+function firstLoad() {
+  let storage = localStorage.getItem('library')
+  if(storage){
+    myLibrary = JSON.parse(storage)
+  } else {
+    myLibrary.push(new Book('1984', 'George Orwell', 328, false))
+    myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 310, true))
+    myLibrary.push(new Book('Dracula', 'Bram Stoker', 431, true))
+    myLibrary.push(new Book('Animal Farm', 'George Orwell', 86, true))
+    myLibrary.push(new Book('The Fellowship of The Ring', 'J.R.R. Tolkien', 432, false))
+    myLibrary.push(new Book('The Martian', 'Andy Weir', 387, true))
+    myLibrary.push(new Book('The Last Wish', 'Andrzej Sapkowski', 384, false))
+    myLibrary.push(new Book('Atomic Habits', 'James Clear', 320, true))
+
+    saveLocalStorage()
+  }
+}
+
+function saveLocalStorage() {
+  let libraryRaw = JSON.stringify(myLibrary)
+  localStorage.setItem('library', libraryRaw)
 }
