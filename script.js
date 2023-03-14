@@ -6,7 +6,7 @@ const bookContainer = document.querySelector('.book-container')
 const overlayPopUp = document.querySelector('.overlay-popUp')
 
 newBook.addEventListener('click', popUpHandler)
-closeFormButton.forEach(btn => addEventListener('click', popUpHandler))
+closeFormButton.forEach(btn => btn.addEventListener('click', popUpHandler))
 bookForm.addEventListener('submit', addBook)
 editForm.addEventListener('submit', editBook)
 
